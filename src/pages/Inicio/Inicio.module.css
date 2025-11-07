@@ -1,9 +1,19 @@
 .container {
-  height: 768px;
-  position: relative;
-  width: 1280px;
+  background-color: var(--bordersbackground);
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
+.navBar {
+  background-color: var(--primary-green);
+  box-shadow: 0px 4px 4px #00000040;
+  height: 70px;
+  position: relative;
+}
+
+/*
 .bgTemplate {
   background-color: var(--bordersbackground);
   display: flex;
@@ -15,13 +25,7 @@
   top: calc(50% - 384px);
   width: 1280px;
 }
-
-.navBar {
-  background-color: var(--primary-green);
-  box-shadow: 0px 4px 4px #00000040;
-  height: 70px;
-  position: relative;
-}
+*/
 
 .userImage {
   aspect-ratio: 1.13;

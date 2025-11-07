@@ -6,6 +6,7 @@
   display: flex;
   flex-direction: column;
 }
+
 /* --- 2. HEADER --- */
 .headerBackground {
   background-color: var(--primary-green);
@@ -46,7 +47,8 @@
   flex-direction: column;
   gap: 20px;
   align-items: center;
-  padding-left: 2.19%; /* Alineación con la imagen */
+  padding-left: 2.19%;
+  /* Alineación con la imagen */
 }
 
 .mainHeading {
@@ -249,7 +251,7 @@
     /* Ocultamos el gato */
   }
 
-  .landingDog { 
+  .landingDog {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
