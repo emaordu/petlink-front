@@ -1,65 +1,58 @@
+/* --- BtnPropuestas.module.css (CORREGIDO) --- */
+
+/* 1. Estado Base (Default) - Botón de arriba en la imagen */
 .btnPropuestas {
   background-color: var(--primary-green);
   color: white;
-  border: none;
+
+  /* Estilos comunes */
   border-radius: 20px;
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
-
-  /* Padding y Flexbox para centrar contenido */
   padding: 10px 20px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
-
-  /* Transiciones y cursor */
   cursor: pointer;
-  transition: background-color 0.2s, color 0.2s, transform 0.2s, border 0.2s;
+  transition: all 0.2s ease-out;
+
+  /* IMPORTANTE: Borde transparente para evitar que el botón "salte" 
+     cuando aparezca el borde en hover/active */
+  border: 5px solid transparent;
+
+  /* ELIMINADOS: Todos los 'top: XXpx' */
 }
 
-.button.predeterminado {
-  background-color: var(--primary-green-dark);
-  top: 20px;
-}
-
-.button.hover {
+/* 2. Estado Hover - Botón del medio en la imagen */
+.btnPropuestas:hover {
   background-color: var(--primary-green-light);
-  border: 5px solid;
   border-color: var(--primary-green-dark);
-  top: 110px;
+  color: var(--textprimary); /* Texto oscuro */
 }
 
-.button.on-click {
+/* 3. Estado Active (On-Click) - Botón de abajo en la imagen */
+.btnPropuestas:active {
   background-color: var(--accent);
-  border: 5px solid;
   border-color: var(--primary-green);
-  top: 200px;
+  color: var(--primary-green); /* Texto verde */
+  transform: translateY(0);
 }
 
+/* 4. Estilo del Texto (Label) */
 .label {
-  align-items: center;
-  display: flex;
   font-family: "Preahvihear-Regular", Helvetica;
-  font-size: 32px;
+  font-size: 20px; /* O el tamaño que prefieras */
   font-weight: 400;
-  justify-content: center;
-  letter-spacing: 0;
-  line-height: normal;
-  position: relative;
   text-align: center;
-  width: fit-content;
+  
+  /* El color es heredado (color: white) del padre */
 }
 
-.label.label-predeterminado {
-  color: var(--accent);
-}
-
-.label.label-hover {
-  color: var(--primary-green);
-  margin-top: -4.00px;
-}
-
-.label.label-on-click {
+/* 5. Cambiamos el color del texto en hover y active */
+.btnPropuestas:hover .label {
   color: var(--textprimary);
-  margin-top: -4.00px;
+}
+
+.btnPropuestas:active .label {
+  color: var(--primary-green);
 }

@@ -1,50 +1,37 @@
-import PropTypes from "prop-types";
 import React from "react";
-import { useReducer } from "react";
 import * as classes from "./BtnPropuestas.module.css";
+import PropTypes from "prop-types";
 
-export const BtnPropuestas = ({ propiedad1, className }) => {
-  const [state, dispatch] = useReducer(reducer, {
-    propiedad1: propiedad1 || "predeterminado",
-  });
+// 1. Props simplificados (igual que BtnPrimary)
+export const BtnPropuestas = ({ className, divClassName, text, onClick }) => {
+  
+  // 2. Eliminamos useReducer, onMouseEnter, onMouseLeave
 
   return (
-    <div
-      className={`${classes.button} ${classes[state.propiedad1]} ${className || ""}`}
-      onMouseEnter={() => {
-        dispatch("mouse_enter");
-      }}
-      onMouseLeave={() => {
-        dispatch("mouse_leave");
-      }}
+    // 3. Convertimos de <div> a <button> para accesibilidad
+    <button
+      className={`${classes.btnPropuestas} ${className || ""}`}
+      onClick={onClick}
     >
       <div
-        className={`${classes.label} ${classes[`label-${state.propiedad1}`]}`}
+        // 4. Usamos divClassName para el texto, igual que BtnPrimary
+        className={`${classes.label} ${divClassName || ""}`}
       >
-        Propuestas
+        {/* 5. Usamos un prop para el texto, en lugar de "Propuestas" fijo */}
+        {text}
       </div>
-    </div>
+    </button>
   );
 };
 
-function reducer(state, action) {
-  switch (action) {
-    case "mouse_enter":
-      return {
-        ...state,
-        propiedad1: "hover",
-      };
-
-    case "mouse_leave":
-      return {
-        ...state,
-        propiedad1: "predeterminado",
-      };
-  }
-
-  return state;
-}
-
 BtnPropuestas.propTypes = {
-  propiedad1: PropTypes.oneOf(["on-click", "predeterminado", "hover"]),
+  className: PropTypes.string,
+  divClassName: PropTypes.string,
+  text: PropTypes.string.isRequired, // Hacemos 'text' requerido
+  onClick: PropTypes.func,
+};
+
+// Valor por defecto si no se provee texto
+BtnPropuestas.defaultProps = {
+  text: "Propuestas",
 };

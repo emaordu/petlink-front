@@ -1,9 +1,9 @@
 import PropTypes from "prop-types";
 import React, { useReducer } from "react";
 import { useNavigate } from "react-router-dom";
-import * as classes from "./NewPost.module.css";
+import * as classes from "./BtnNewPost.module.css";
 
-export const NewPost = ({ estado = "predeterminado", className }) => {
+export const BtnNewPost = ({ estado = "predeterminado", className }) => {
   const [state, dispatch] = useReducer(reducer, { estado });
   const navigate = useNavigate(); // 
 
@@ -42,6 +42,6 @@ function reducer(state, action) {
   }
 }
 
-NewPost.propTypes = {
+BtnNewPost.propTypes = {
   estado: PropTypes.oneOf(["on-click", "predeterminado", "hover"]),
 };

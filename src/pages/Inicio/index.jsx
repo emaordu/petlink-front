@@ -4,8 +4,8 @@ import { BtnLink } from "../../components/UI/Buttons/BtnLink";
 import { BtnOfertas } from "../../components/UI/Buttons/BtnOfertas";
 import { BtnPropuestas } from "../../components/UI/Buttons/BtnPropuestas";
 import { CardMainpage } from "../../components/CardMainpage";
-import { NewPost } from "../../components/UI/Buttons/NewPost";
-import home from "../../assets/images/btnImg/home.png";
+import { BtnNewPost } from "../../components/UI/Buttons/BtnNewPost";
+import home from "../../assets/images/icons/home.png";
 import image12 from "../../assets/images/image-12.png";
 import registerDog from "../../assets/images/register-Dog.png";
 import styles from "./Inicio.module.css"; 
@@ -28,7 +28,7 @@ export const Inicio = () => {
           <BtnOfertas className={styles.btnOfertasInstance} />
         </div>
 
-        <NewPost className={styles.newPostInstance} />
+        <BtnNewPost className={styles.BtnNewPostInstance} />
       </div>
 
       <div className={styles.textWrapper3}>Bienvenido a PetLink #username!</div>

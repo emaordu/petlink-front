@@ -1,58 +1,55 @@
+/* --- BtnOfertas.module.css (CORREGIDO) --- */
+
+/* 1. Estado Base (Default) */
 .btnOfertas {
- background-color: var(--primary-green);
+  background-color: var(--primary-green);
   color: white;
-  border: none;
   border-radius: 20px;
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
-
-  /* Padding y Flexbox para centrar contenido */
   padding: 10px 20px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
-
-  /* Transiciones y cursor */
   cursor: pointer;
-  transition: background-color 0.2s, color 0.2s, transform 0.2s, border 0.2s;
+  
+  /* Transición sin 'transform' */
+  transition: background-color 0.2s, color 0.2s, border 0.2s;
+  
+  /* Borde transparente para evitar que "salte" */
+  border: 5px solid transparent;
 }
 
-.btnOfertas.hover {
+/* 2. Estado Hover (Basado en tu clase .hover anterior) */
+.btnOfertas:hover {
   background-color: var(--primary-green-light);
-  border: 5px solid;
   border-color: var(--primary-green-dark);
-  top: 110px;
+  color: var(--textprimary); /* Texto oscuro */
 }
 
-.btnOfertas.on-click {
+/* 3. Estado Active (Basado en tu clase .on-click anterior) */
+.btnOfertas:active {
   background-color: var(--accent);
-  border: 5px solid;
   border-color: var(--primary-green);
-  top: 200px;
+  color: var(--primary-green); /* Texto verde */
 }
 
+/* 4. Estilo del Texto (Label) */
 .label {
-  align-items: center;
-  color: var(--accent);
-  display: flex;
   font-family: "Preahvihear-Regular", Helvetica;
-  font-size: 32px;
+  font-size: 20px; /* O el tamaño que prefieras */
   font-weight: 400;
-  justify-content: center;
-  letter-spacing: 0;
-  line-height: normal;
-  margin-top: -1.00px;
-  position: relative;
   text-align: center;
-  width: fit-content;
+  
+  /* El color es heredado (color: white) del padre */
+  /* Corregido de 'color: var(--accent)' */
 }
 
-.hover .label {
-  color: var(--primary-green);
-  margin-top: -5.00px;
-}
-
-.on-click .label {
+/* 5. Cambiamos el color del texto en hover y active */
+.btnOfertas:hover .label {
   color: var(--textprimary);
-  margin-top: -5.00px;
+}
+
+.btnOfertas:active .label {
+  color: var(--primary-green);
 }
