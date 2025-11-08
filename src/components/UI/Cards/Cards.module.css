@@ -1,0 +1,93 @@
+/* Tarjeta del feed, estilo uniforme */
+.card {
+  display: grid;
+  grid-template-columns: 1fr minmax(180px, 260px);
+  align-items: center;
+  gap: 16px;
+
+  background-color: var(--accent);
+  border: 1px solid var(--bordersdivs);
+  border-radius: 14px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+
+  padding: 16px;
+}
+
+.content { }
+
+.title {
+  color: var(--textprimary);
+  font-family: "Preahvihear", Helvetica;
+  font-size: clamp(18px, 2.2vw, 22px);
+  font-weight: 400;
+  margin: 0 0 8px 0;
+}
+
+.description {
+  color: var(--textprimary);
+  font-family: "Lato", Helvetica;
+  font-size: clamp(13px, 1.6vw, 15px);
+  line-height: 1.4;
+  margin: 0 0 12px 0;
+}
+
+.metaRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--textsecondary);
+  font-family: "Reddit Mono", Helvetica;
+  font-size: 12px;
+}
+
+.location {
+  white-space: nowrap;
+}
+
+.published {
+  white-space: nowrap;
+}
+
+.imageWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.image {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+/* Feed con scroll-snap de 4 tarjetas por página */
+.feedContainer {
+  height: 100%;
+  overflow-y: auto;
+  scroll-snap-type: y mandatory;
+}
+
+.page {
+  scroll-snap-align: start;
+  padding: 16px 24px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+@media (max-width: 900px) {
+  .card {
+    grid-template-columns: 1fr; /* imagen bajo el texto */
+  }
+  .image {
+    height: 160px;
+  }
+}
+
+@media (max-width: 640px) {
+  .grid { grid-template-columns: 1fr; }
+}

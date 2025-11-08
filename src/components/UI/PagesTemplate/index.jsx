@@ -1,7 +1,7 @@
 import React from "react";
 import * as classes from "./PagesTemplate.module.css";
-import { NavBar } from "../NavBar";
-import BtnNewPost from "../Buttons/BtnNewPost";
+import { NavBar } from "@/components/UI/NavBar";
+import BtnNewPost from "@/components/UI/Buttons/BtnNewPost";
 
 // Plantilla de página: incluye NavBar al tope y botón flotante de nuevo post.
 // Renderiza el contenido de la página vía children, manteniendo enfoque mobile-first.

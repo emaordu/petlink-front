@@ -3,14 +3,14 @@ import * as classes from "./BtnPropuestas.module.css";
 import PropTypes from "prop-types";
 
 // 1. Props simplificados (igual que BtnPrimary)
-export const BtnPropuestas = ({ className, divClassName, text, onClick }) => {
+export const BtnPropuestas = ({ className, divClassName, text, onClick, active = false }) => {
   
   // 2. Eliminamos useReducer, onMouseEnter, onMouseLeave
 
   return (
     // 3. Convertimos de <div> a <button> para accesibilidad
     <button
-      className={`${classes.btnPropuestas} ${className || ""}`}
+      className={`${classes.btnPropuestas} ${active ? classes.active : ""} ${className || ""}`}
       onClick={onClick}
     >
       <div
@@ -29,6 +29,7 @@ BtnPropuestas.propTypes = {
   divClassName: PropTypes.string,
   text: PropTypes.string.isRequired, // Hacemos 'text' requerido
   onClick: PropTypes.func,
+  active: PropTypes.bool,
 };
 
 // Valor por defecto si no se provee texto

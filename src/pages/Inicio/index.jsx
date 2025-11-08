@@ -1,10 +1,10 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { BtnLink } from "../../components/UI/Buttons/BtnLink";
-import { CardMainpage } from "../../components/UI/CardMainpage";
-import { PagesTemplate } from "../../components/UI/PagesTemplate";
-import image12 from "../../assets/images/image-12.png";
-import registerDog from "../../assets/images/register-Dog.png";
+import { BtnLink } from "@/components/UI/Buttons/BtnLink";
+import { CardMainpage } from "@/components/UI/CardMainpage";
+import { PagesTemplate } from "@/components/UI/PagesTemplate";
+import image12 from "@/assets/images/image-12.png";
+import registerDog from "@/assets/images/register-Dog.png";
 import styles from "./Inicio.module.css";
 
 export const Inicio = () => {

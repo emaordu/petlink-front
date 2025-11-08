@@ -1,49 +1,103 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import * as classes from "./NavBar.module.css";
 
-import { BtnOfertas } from "../Buttons/BtnOfertas";
-import { BtnPropuestas } from "../Buttons/BtnPropuestas";
-import { BtnHome } from "../Buttons/BtnHome";
+import { BtnOfertas } from "@/components/UI/Buttons/BtnOfertas";
+import { BtnPropuestas } from "@/components/UI/Buttons/BtnPropuestas";
+import { BtnHome } from "@/components/UI/Buttons/BtnHome";
 
 import defaultAvatar from "@/assets/images/icons/Profile.png";
+import chatIcon from "@/assets/images/icons/Chat.png";
+import { useChat } from "@/context/ChatContext";
+import { MenuDesplegable } from "@/components/UI/Menu";
+import { useToast } from "@/components/UI/Toast";
 
 export const NavBar = ({ userImageUrl, onProfileClick }) => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const [menuOpen, setMenuOpen] = useState(false);
+  const rightGroupRef = useRef(null);
+  const { toggleChat } = useChat();
+  const { showToast } = useToast();
+  const handleLogout = () => {
+    try {
+      localStorage.removeItem("authToken");
+      localStorage.removeItem("user");
+    } catch (e) {}
+    navigate("/", { replace: true });
+    showToast("Sesión cerrada", { type: "success" });
+  };
+
+  // Cerrar al hacer click fuera
+  useEffect(() => {
+    function handleClickOutside(e) {
+      if (menuOpen && rightGroupRef.current && !rightGroupRef.current.contains(e.target)) {
+        setMenuOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [menuOpen]);
 
   return (
-    // 4. El div .navbar ahora es el contenedor Flex
     <div className={classes.navbar}>
-      {/* 5. Grupo Izquierdo: Links de Navegación */}
-      <div className={classes.navLinks}>
+      {/* Izquierda: Home */}
+      <div className={classes.leftGroup}>
         <BtnHome onClick={() => navigate("/inicio")} />
+      </div>
 
-        <BtnOfertas
-          className={classes.btnOfertas}
-          text="Ofertas" // <-- PROP CORREGIDO
-          onClick={() => navigate("/ofertas")} // Asumiendo una ruta
-        />
-
+      {/* Centro: Propuestas y Ofertas, siempre centrados */}
+      <div className={classes.centerGroup}>
         <BtnPropuestas
           className={classes.btnPropuestas}
-          text="Propuestas" // <-- PROP CORREGIDO
-          onClick={() => navigate("/propuestas")} // Asumiendo una ruta
+          active={location.pathname === "/propuestas"}
+          text="Propuestas"
+          onClick={() => navigate("/propuestas")}
+        />
+        <BtnOfertas
+          className={classes.btnOfertas}
+          active={location.pathname === "/ofertas"}
+          text="Ofertas"
+          onClick={() => navigate("/ofertas")}
         />
       </div>
 
-      {/* 6. Grupo Derecho: Controles de Usuario */}
-      <div className={classes.userControls}>
-        <div className={classes.misChats} onClick={() => navigate("/chats")}>
-          Mis Chats
-        </div>
-
-        <button className={classes.profileButton} onClick={onProfileClick}>
+      {/* Derecha: Chat + Perfil */}
+      <div className={classes.rightGroup} ref={rightGroupRef}>
+        <button
+          className={classes.chatButton}
+          onClick={() => toggleChat({ postTitle: "Chats", counterpartUsername: "" })}
+          aria-label="Abrir/Cerrar chat"
+        >
+          <img src={chatIcon} alt="Chat" className={classes.chatIcon} />
+        </button>
+        <button
+          className={classes.profileButton}
+          onClick={() => {
+            setMenuOpen((o) => !o);
+            onProfileClick?.();
+          }}
+          aria-haspopup="menu"
+          aria-expanded={menuOpen}
+        >
           <img
             className={classes.userImage}
             alt="Imagen de perfil"
             src={userImageUrl || defaultAvatar}
           />
         </button>
+
+        <MenuDesplegable
+          isOpen={menuOpen}
+          onClose={() => setMenuOpen(false)}
+          items={[
+            { label: "Perfil", onClick: () => navigate("/perfil") },
+            { label: "Configuración", onClick: () => navigate("/configuracion") },
+            { label: "Mis Publicaciones", onClick: () => navigate("/mis-publicaciones") },
+            { label: "Cerrar Sesión", onClick: handleLogout },
+          ]}
+        />
       </div>
     </div>
   );

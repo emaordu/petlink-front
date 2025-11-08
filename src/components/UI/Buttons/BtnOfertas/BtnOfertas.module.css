@@ -6,7 +6,7 @@
   color: white;
   border-radius: 20px;
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
-  padding: 10px 20px;
+  padding: clamp(8px, 1.2vw, 10px) clamp(16px, 3vw, 20px);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -18,6 +18,8 @@
   
   /* Borde transparente para evitar que "salte" */
   border: 5px solid transparent;
+  width: clamp(130px, 18vw, 180px); /* igual ancho que Propuestas */
+  white-space: nowrap; /* evita saltos de línea */
 }
 
 /* 2. Estado Hover (Basado en tu clase .hover anterior) */
@@ -37,7 +39,7 @@
 /* 4. Estilo del Texto (Label) */
 .label {
   font-family: "Preahvihear", Helvetica;
-  font-size: 20px; /* O el tamaño que prefieras */
+  font-size: clamp(16px, 2vw, 20px);
   font-weight: 400;
   text-align: center;
   
@@ -52,4 +54,14 @@
 
 .btnOfertas:active .label {
   color: var(--primary-green);
+}
+
+/* Estado activo persistente para indicar página actual */
+.active {
+  background-color: var(--primary-green-light);
+  border-color: var(--primary-green-dark);
+  color: var(--textprimary);
+}
+.active .label {
+  color: var(--textprimary);
 }

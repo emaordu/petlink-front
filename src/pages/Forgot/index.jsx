@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { BtnPrimary } from '../../components/UI/Buttons/BtnPrimary';
+import { BtnPrimary } from '@/components/UI/Buttons/BtnPrimary';
 import styles from './Forgot.module.css';
 
 function Forgot() {

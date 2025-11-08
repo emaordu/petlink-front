@@ -4,11 +4,19 @@ import { BrowserRouter } from 'react-router-dom'
 import './index.css'
 import App from './App.jsx'
 import './styles/global.css';
+import { ChatProvider } from './context/ChatContext.jsx';
+import { ToastProvider } from './components/UI/Toast';
+import { ChatPanel } from './components/UI/Chat';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter>
-      <App />
+      <ToastProvider>
+        <ChatProvider>
+          <App />
+          <ChatPanel />
+        </ChatProvider>
+      </ToastProvider>
     </BrowserRouter>
   </StrictMode>,
 )

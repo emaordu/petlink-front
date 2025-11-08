@@ -1,8 +1,8 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { BtnPrimary } from "../../components/UI/Buttons/BtnPrimary";
+import { BtnPrimary } from "@/components/UI/Buttons/BtnPrimary";
 import styles from './Register.module.css';
-import registerDog from '../../assets/images/register-Dog.png';
+import registerDog from '@/assets/images/register-Dog.png';
 
 function Register() {
   const navigate = useNavigate();

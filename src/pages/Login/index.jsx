@@ -1,8 +1,8 @@
 import React from 'react';
 import { ScrollRestoration, useNavigate } from 'react-router-dom';
-import { BtnPrimary } from "../../components/UI/Buttons/BtnPrimary";
+import { BtnPrimary } from "@/components/UI/Buttons/BtnPrimary";
 import styles from './Login.module.css';
-import loginCat from '../../assets/images/login-Cat.png';
+import loginCat from '@/assets/images/login-Cat.png';
 
 function Login() {
   const navigate = useNavigate();

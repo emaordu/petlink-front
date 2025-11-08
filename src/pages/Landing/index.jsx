@@ -1,8 +1,8 @@
 import React from "react";
-import { BtnPrimary } from "../../components/UI/Buttons/BtnPrimary";
-import { BtnSecondary } from "../../components/UI/Buttons/BtnSecondary";
-import landingDog from "../../assets/images/landing-dog.png";
-import landingCat from "../../assets/images/landing-cat.png";
+import { BtnPrimary } from "@/components/UI/Buttons/BtnPrimary";
+import { BtnSecondary } from "@/components/UI/Buttons/BtnSecondary";
+import landingDog from "@/assets/images/landing-dog.png";
+import landingCat from "@/assets/images/landing-cat.png";
 import * as classes from "./landing.module.css";
 import { useNavigate } from 'react-router-dom';
 

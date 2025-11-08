@@ -2,29 +2,38 @@
   background-color: var(--primary-green);
   border-radius: 0 0 24px 24px;
   height: 70px;
-  position: relative; /* Para el menú desplegable del perfil */
-  width: 100%; /* <-- 1. 100% ANCHO, NO 1280px */
-  padding: 0 28px; /* <-- 2. Padding para los lados */
+  position: relative;
+  width: 100%;
+  padding: 0 28px;
   box-sizing: border-box;
+  overflow: visible; /* permite que el menú se muestre debajo del avatar */
 
-  /* --- 3. FLEXBOX --- */
-  display: flex;
+  /* Layout de 3 columnas: izquierda, centro, derecha */
+  display: grid;
+  grid-template-columns: auto 1fr auto;
   align-items: center;
-  justify-content: space-between; /* Empuja los grupos a cada lado */
 }
 
 /* --- 4. GRUPO IZQUIERDO (Home, Ofertas, Propuestas) --- */
-.navLinks {
+.leftGroup {
   display: flex;
   align-items: center;
-  gap: 20px; /* Espacio entre botones */
+}
+
+.centerGroup {
+  display: flex;
+  align-items: center;
+  justify-self: center; /* fuerza el centro */
+  gap: 16px;
+  min-width: 0; /* permite que los hijos calculen correctamente su ancho */
 }
 
 /* --- 5. GRUPO DERECHO (Chats, Perfil) --- */
-.userControls {
+.rightGroup {
   display: flex;
   align-items: center;
-  gap: 25px; /* Espacio entre 'Mis Chats' y el perfil */
+  gap: 25px;
+  position: relative; /* ancla el menú bajo el avatar */
 }
 
 /*
@@ -43,6 +52,22 @@
   font-size: 28px;
   font-weight: 400;
   cursor: pointer;
+}
+
+/* Botón de chat con icono */
+.chatButton {
+  width: 36px;
+  height: 36px;
+  border: none;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+}
+.chatIcon {
+  width: 28px;
+  height: 28px;
 }
 
 /* --- 8. PERFIL --- */
@@ -66,4 +91,30 @@
   height: 100%;
   object-fit: cover;
   border-radius: 50%;
+}
+
+/* Grupo central que agrupa Propuestas + Ofertas como un pill */
+/* eliminado 'segmented' ya que no se requiere efecto pill */
+
+@media (max-width: 640px) {
+  .navbar {
+    height: 64px;
+    padding: 0 16px;
+  }
+  .misChats {
+    font-size: 20px;
+  }
+  .rightGroup {
+    gap: 16px;
+  }
+  .centerGroup {
+    gap: 8px;
+  }
+}
+
+/* Reducir contenido en pantallas muy pequeñas para evitar overflow */
+@media (max-width: 480px) {
+  .misChats { display: none; }
+  .chatButton { width: 32px; height: 32px; }
+  .chatIcon { width: 24px; height: 24px; }
 }
