@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import BtnPrimaryLogin from '../../components/BtnPrimaryLogin';
+import { BtnPrimary } from '../../components/UI/Buttons/BtnPrimary';
 import styles from './Forgot.module.css';
 
 function Forgot() {
@@ -15,7 +15,7 @@ function Forgot() {
         <input type="password" placeholder="New Password" className={styles.input} />
         <input type="password" placeholder="Confirm Password" className={styles.input} />
 
-        <BtnPrimaryLogin
+        <BtnPrimary
           text="Confirmar"
           onClick={() => navigate('/login')}
         />

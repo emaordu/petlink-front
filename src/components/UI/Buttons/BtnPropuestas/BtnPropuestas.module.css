@@ -40,7 +40,7 @@
 
 /* 4. Estilo del Texto (Label) */
 .label {
-  font-family: "Preahvihear-Regular", Helvetica;
+  font-family: "Preahvihear", Helvetica;
   font-size: 20px; /* O el tamaño que prefieras */
   font-weight: 400;
   text-align: center;

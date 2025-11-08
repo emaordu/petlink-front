@@ -41,7 +41,7 @@
   align-items: center;
   color: var(--accent);
   display: flex;
-  font-family: "Reddit Mono-Regular", Helvetica;
+  font-family: "Roboto", Helvetica;
   font-size: 32px;
   font-weight: 400;
   height: 42px;
@@ -89,7 +89,7 @@
 
 .textWrapper3 {
   color: #000000;
-  font-family: "Reddit Mono-Light", Helvetica;
+  font-family: "Roboto", Helvetica;
   font-size: 32px;
   font-weight: 300;
   left: 30px;
@@ -127,7 +127,7 @@
 
 .p {
   color: var(--textprimary);
-  font-family: "Reddit Mono-Light", Helvetica;
+  font-family: "Roboto", Helvetica;
   font-size: 24px;
   font-weight: 300;
   left: 38px;
@@ -148,7 +148,7 @@
 
 .estSEntreLos {
   color: var(--textprimary);
-  font-family: "Reddit Mono-Light", Helvetica;
+  font-family: "Roboto", Helvetica;
   font-size: 24px;
   font-weight: 300;
   left: 38px;
@@ -227,7 +227,7 @@
 
 .textWrapper5 {
   color: #000000;
-  font-family: "Reddit Mono-Regular", Helvetica;
+  font-family: "Roboto", Helvetica;
   font-size: 24px;
   font-weight: 400;
   left: calc(50% - 184px);
@@ -253,4 +253,88 @@
   position: absolute !important;
   top: 10.71% !important;
   width: 98.76% !important;
+}
+
+/* ===== NUEVO: Layout mobile-first para Inicio ===== */
+.inicioPage {
+  background-color: var(--bordersbackground);
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.contentGrid {
+  display: grid;
+  grid-template-columns: 1fr; /* móvil */
+  gap: 16px;
+  padding: 16px;
+}
+
+@media (min-width: 900px) {
+  .contentGrid {
+    grid-template-columns: 1fr 360px; /* izquierda: feed, derecha: sidebar */
+    align-items: start;
+  }
+}
+
+.feedSection {}
+
+.feedHeader {
+  color: var(--textprimary);
+  font-family: "Reddit Mono-Regular", Helvetica;
+  font-size: 20px;
+  margin: 0 0 12px 0;
+}
+
+.cardsList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background-color: var(--primary-green-light);
+  border-radius: 12px;
+  padding: 12px;
+  border: 1px solid var(--bordersdivs);
+}
+
+.notifications {
+  margin-top: 12px;
+  font-family: "Lato", Helvetica;
+  color: var(--textprimary);
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.panel {
+  background-color: var(--primary-green-light);
+  border-radius: 12px;
+  border: 1px solid var(--bordersdivs);
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.panelText {
+  color: var(--textprimary);
+  font-family: "Lato", Helvetica;
+  font-size: 16px;
+  margin: 0;
+}
+
+.panelImage {
+  width: 96px;
+  height: auto;
+  object-fit: cover;
+}
+
+.fab {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 50;
 }

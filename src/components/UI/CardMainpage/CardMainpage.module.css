@@ -1,0 +1,45 @@
+/* Card responsiva (mobile-first) */
+.card {
+  background-color: var(--accent);
+  border: 1px solid var(--bordersdivs);
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+  padding: 16px;
+}
+
+.cardInner {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.title {
+  color: var(--textprimary);
+  font-family: "Reddit Mono-Regular", Helvetica;
+  font-size: 20px;
+  margin: 0;
+}
+
+.body {
+  color: var(--textprimary);
+  font-family: "Lato", Helvetica;
+  font-size: 14px;
+  margin: 0;
+}
+
+.metaRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 8px;
+  font-size: 12px;
+  color: var(--textsecondary);
+}
+
+.location::before {
+  content: "📍 ";
+}
+
+.published {
+  text-align: right;
+}

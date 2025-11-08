@@ -1,47 +1,16 @@
-import PropTypes from "prop-types";
-import React, { useReducer } from "react";
-import { useNavigate } from "react-router-dom";
-import * as classes from "./BtnNewPost.module.css";
+import React from 'react';
+import styles from './BtnNewPost.module.css';
 
-export const BtnNewPost = ({ estado = "predeterminado", className }) => {
-  const [state, dispatch] = useReducer(reducer, { estado });
-  const navigate = useNavigate(); // 
-
-  const handleClick = () => {
-    dispatch("mouse_click"); 
-    setTimeout(() => {
-      navigate("/crear-post"); // 
-    }, 150); 
-  };
-
+function BtnNewPost({ className, onClick, label = '+' }) {
   return (
-    <div
-      className={`${classes.container} ${classes[state.estado]} ${className || ""}`}
-      onMouseEnter={() => dispatch("mouse_enter")}
-      onMouseLeave={() => dispatch("mouse_leave")}
-      onClick={handleClick}
-      style={{ cursor: "pointer" }} 
+    <button
+      className={`${styles.container} ${className || ''}`}
+      onClick={onClick}
+      aria-label="Nueva publicación"
     >
-      <div className={`${classes.icon} ${classes[`icon-${state.estado}`]}`}>
-        +
-      </div>
-    </div>
+      <span className={styles.icon}>{label}</span>
+    </button>
   );
-};
-
-function reducer(state, action) {
-  switch (action) {
-    case "mouse_enter":
-      return { ...state, estado: "hover" };
-    case "mouse_leave":
-      return { ...state, estado: "predeterminado" };
-    case "mouse_click":
-      return { ...state, estado: "on-click" };
-    default:
-      return state;
-  }
 }
 
-BtnNewPost.propTypes = {
-  estado: PropTypes.oneOf(["on-click", "predeterminado", "hover"]),
-};
+export default BtnNewPost;

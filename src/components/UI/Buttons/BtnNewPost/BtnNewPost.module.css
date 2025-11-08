@@ -1,46 +1,45 @@
 .container {
-  align-items: center;
-  aspect-ratio: 1;
+  /* Base visual alineada con Ofertas/Propuestas */
   background-color: var(--primary-green);
-  border-radius: 35px;
-  display: flex;
-  height: 70px;
+  color: white;
+  border-radius: 50%; /* Mantener forma redonda */
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+
+  /* Tamaño responsivo: botón circular */
+  width: clamp(48px, 9vw, 64px);
+  aspect-ratio: 1;
+  display: inline-flex;
+  align-items: center;
   justify-content: center;
-  left: 20px;
-  position: relative;
-  top: 20px;
-  width: 70px;
-  transition: all 0.2s ease;
+
+  /* Transición consistente con otros botones */
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s, border 0.2s, transform 0.2s;
+
+  /* Borde transparente para evitar salto al aparecer borde en hover/active */
+  border: 5px solid transparent;
 }
 
-.container.hover {
+.container:hover {
   background-color: var(--primary-green-light);
-  border: 5px solid var(--primary-green);
-  top: 110px;
+  border-color: var(--primary-green-dark);
 }
 
-.container.on-click {
-  background-color: var(--primary-green-light);
-  border: 5px solid var(--primary-green-dark);
-  top: 200px;
+.container:active {
+  background-color: var(--accent);
+  border-color: var(--primary-green);
+  color: var(--primary-green);
+  transform: translateY(0);
 }
 
 .icon {
-  color: #ffffff;
-  font-family: "Reddit Mono-Light", Helvetica;
-  font-size: 36px;
-  font-weight: 300;
-  height: 50px;
-  letter-spacing: 0;
-  line-height: normal;
+  /* Tipografía alineada con botones superiores */
+  font-family: "Preahvihear", Helvetica;
+  font-weight: 400;
+  color: currentColor;
+  line-height: 1;
   text-align: center;
-  width: 50px;
-}
 
-.icon-hover {
-  color: var(--primary-green);
-}
-
-.icon-on-click {
-  color: var(--textprimary);
+  /* Tamaño del símbolo '+' responsivo */
+  font-size: clamp(20px, 4.2vw, 28px);
 }

@@ -1,0 +1,69 @@
+.navbar {
+  background-color: var(--primary-green);
+  border-radius: 0 0 24px 24px;
+  height: 70px;
+  position: relative; /* Para el menú desplegable del perfil */
+  width: 100%; /* <-- 1. 100% ANCHO, NO 1280px */
+  padding: 0 28px; /* <-- 2. Padding para los lados */
+  box-sizing: border-box;
+
+  /* --- 3. FLEXBOX --- */
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Empuja los grupos a cada lado */
+}
+
+/* --- 4. GRUPO IZQUIERDO (Home, Ofertas, Propuestas) --- */
+.navLinks {
+  display: flex;
+  align-items: center;
+  gap: 20px; /* Espacio entre botones */
+}
+
+/* --- 5. GRUPO DERECHO (Chats, Perfil) --- */
+.userControls {
+  display: flex;
+  align-items: center;
+  gap: 25px; /* Espacio entre 'Mis Chats' y el perfil */
+}
+
+/*
+.btnOfertas {
+  /* Ya no necesita position, left, top 
+}
+.btnPropuestas {
+  /* Ya no necesita position, left, top 
+}
+*/
+
+/* --- 7. MIS CHATS --- */
+.misChats {
+  color: var(--accent);
+  font-family: "Roboto", Helvetica;
+  font-size: 28px;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+/* --- 8. PERFIL --- */
+.profileButton {
+  height: 58px;
+  width: 58px;
+  border-radius: 50%;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.profileButton:hover {
+  opacity: 0.8;
+}
+
+.userImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}

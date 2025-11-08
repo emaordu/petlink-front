@@ -1,0 +1,8 @@
+.menuDesplegable {
+  align-items: flex-start;
+  display: inline-flex;
+  flex-direction: column;
+  left: 4415px;
+  position: relative;
+  top: 208px;
+}

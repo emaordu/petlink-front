@@ -1,44 +1,25 @@
-import PropTypes from "prop-types";
 import React from "react";
-import { useReducer } from "react";
-import * as classes from "./style.module.css";
+// 1. Asegúrate de que importe el CSS correcto
+import * as classes from "./BtnHome.module.css"; 
+// 2. Importa tu ícono (ajusta la ruta si es necesario)
+import homeIcon from "@/assets/images/icons/home.png"; 
 
-export const Home = ({ estado, className }) => {
-  const [state, dispatch] = useReducer(reducer, {
-    estado: estado || "predeterminado",
-  });
+export const BtnHome = ({ className, onClick }) => {
+  
+  // 3. Eliminamos useReducer, onMouseEnter, onMouseLeave
 
   return (
-    <div
-      className={`${classes.home} ${classes[state.estado]} ${className || ""}`}
-      onMouseEnter={() => {
-        dispatch("mouse_enter");
-      }}
-      onMouseLeave={() => {
-        dispatch("mouse_leave");
-      }}
-    />
+    // 4. Convertimos de <div> a <button>
+    <button
+      className={`${classes.btnHome} ${className || ""}`}
+      onClick={onClick}
+    >
+      {/* 5. Renderizamos el ícono como <img>, no como fondo */}
+      <img 
+        src={homeIcon} 
+        alt="Home" 
+        className={classes.icon} 
+      />
+    </button>
   );
-};
-
-function reducer(state, action) {
-  switch (action) {
-    case "mouse_enter":
-      return {
-        ...state,
-        estado: "hover",
-      };
-
-    case "mouse_leave":
-      return {
-        ...state,
-        estado: "predeterminado",
-      };
-  }
-
-  return state;
-}
-
-Home.propTypes = {
-  estado: PropTypes.oneOf(["on-click", "predeterminado", "hover"]),
 };
