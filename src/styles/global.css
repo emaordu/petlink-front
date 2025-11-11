@@ -12,4 +12,6 @@
   --textlink-blue-text-light: rgba(77, 165, 209, 1);
   --textprimary: rgba(33, 33, 33, 1);
   --textsecondary: rgba(117, 117, 117, 1);
+  --red-dark: rgba(170, 38, 38, 1);
+  --red-light: rgba(255, 100, 100, 1);
 }

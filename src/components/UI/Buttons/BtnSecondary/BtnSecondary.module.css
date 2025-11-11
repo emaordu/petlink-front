@@ -1,6 +1,7 @@
 .btnSecondary {
   background-color: var(--accent);
-  border: 2px solid var(--primary-green-dark);
+  border: 5px solid var(--primary-green);
+  color: var(--primary-green);
   border-radius: 20px;
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
 
@@ -16,16 +17,15 @@
 }
 
 .btnSecondary:hover {
-  background-color: var(--primary-green);
   border-color: var(--primary-green-light);
-  border: 2px solid;
-  color: var(--bordersbackground);
+  background-color: var(--primary-green);
+  color: var(--primary-green-light);
 }
 
 .btnSecondary:active {
   background-color: var(--primary-green-light);
   border-color: var(--primary-green);
-  color: var(--textprimary);
+  color: var(--primary-green);
 }
 
 .label { font-family: "Preahvihear", Helvetica; font-size: 16px; font-weight: 400; }

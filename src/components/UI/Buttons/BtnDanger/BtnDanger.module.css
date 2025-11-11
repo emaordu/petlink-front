@@ -2,7 +2,7 @@
 .btnDanger {
   background-color: var(--error); /* rojo principal */
   color: white;
-  border: 2px solid #b71c1c;
+  border: 5px solid var(--red-dark);
   border-radius: 20px;
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
 
@@ -14,17 +14,18 @@
 
   /* Transiciones y cursor */
   cursor: pointer;
-  transition: background-color 0.2s, color 0.2s;
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s;
 }
 
 .btnDanger:hover {
   background-color: var(--red-dark);
+  border-color: var(--red-light);
   color: white;
 }
 
 .btnDanger:active {
   background-color: var(--red-light);
-  border: none;
+  border-color: var(--error);
   color: var(--textprimary);
 }
 
@@ -36,4 +37,10 @@
 
 @media (min-width: 768px) {
   .btnDanger { padding: 12px 20px; }
+}
+
+.sm {
+  padding: 8px 12px;
+  gap: 6px;
+  border-radius: 16px;
 }

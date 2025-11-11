@@ -42,4 +42,7 @@
 
 @media (min-width: 768px) {
   .page { padding: 20px; }
+  .contentWrap {
+    max-width: none;
+  }
 }

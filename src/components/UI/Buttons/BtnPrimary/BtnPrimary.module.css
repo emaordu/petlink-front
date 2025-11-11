@@ -1,7 +1,7 @@
 .btnPrimary {
   background-color: var(--primary-green);
   color: white;
-  border: none;
+  border: 5px solid var(--primary-green-dark);
   border-radius: 20px;
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
 
@@ -14,24 +14,30 @@
 
   /* Transiciones y cursor */
   cursor: pointer;
-  transition: background-color 0.2s, color 0.2s;
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s;
 }
 
 .btnPrimary:hover {
   background-color: var(--primary-green-dark);
+  border-color: var(--primary-green);
   color: white;
 }
 
 .btnPrimary:active {
   background-color: var(--primary-green-light);
-  border: 5px solid;
-  border-color: var(--primary-green-dark);
+  border-color: var(--primary-green);
   color: var(--textprimary);
 }
+
+.label { font-family: "Preahvihear", Helvetica; font-size: 16px; font-weight: 400; }
 
 /* Variante pequeña para compactar en PostContainer acciones */
 .sm {
   padding: 8px 12px;
   gap: 6px;
   border-radius: 16px;
+}
+
+@media (min-width: 768px) {
+  .btnPrimary { padding: 12px 20px; }
 }
