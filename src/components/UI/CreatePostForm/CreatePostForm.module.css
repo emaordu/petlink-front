@@ -49,6 +49,20 @@
 .hiddenInput { display: none; }
 .attachInfo { color: var(--textsecondary); font-size: 13px; }
 
+/* Miniaturas de archivos */
+.previewGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 12px;
+}
+.previewItem { position: relative; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 6px rgba(0,0,0,0.1); }
+.previewThumb { width: 100%; height: 100px; object-fit: cover; display: block; }
+.removeBtn {
+  position: absolute; top: 6px; right: 6px;
+  background: rgba(0,0,0,0.5); color: #fff; border: none; border-radius: 50%;
+  width: 24px; height: 24px; cursor: pointer; line-height: 24px; text-align: center;
+}
+
 .textarea {
   background: var(--bordersbackground);
   border: none;

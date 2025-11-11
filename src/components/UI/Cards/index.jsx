@@ -9,9 +9,16 @@ export const FeedCard = ({
   location,
   publishedAt,
   className,
+  onClick,
 }) => {
   return (
-    <article className={`${classes.card} ${className || ""}`}>
+    <article
+      className={`${classes.card} ${className || ""}`}
+      onClick={onClick}
+      role={onClick ? "button" : undefined}
+      tabIndex={onClick ? 0 : undefined}
+      onKeyDown={onClick ? (e) => { if (e.key === "Enter") onClick(); } : undefined}
+    >
       <div className={classes.content}>
         <h3 className={classes.title}>{title}</h3>
         <p className={classes.description}>{description}</p>
@@ -30,7 +37,7 @@ export const FeedCard = ({
 };
 
 // Lista de tarjetas con snap scroll de 4 en 4
-export const CardsFeed = ({ items = [] }) => {
+export const CardsFeed = ({ items = [], onCardClick }) => {
   const pages = [];
   for (let i = 0; i < items.length; i += 4) {
     pages.push(items.slice(i, i + 4));
@@ -42,7 +49,11 @@ export const CardsFeed = ({ items = [] }) => {
         <section key={idx} className={classes.page} aria-label={`Página ${idx + 1}`}>
           <div className={classes.grid}>
             {pageItems.map((it, j) => (
-              <FeedCard key={`${idx}-${j}`} {...it} />
+              <FeedCard
+                key={`${idx}-${j}`}
+                {...it}
+                onClick={onCardClick ? () => onCardClick(it) : undefined}
+              />
             ))}
           </div>
         </section>

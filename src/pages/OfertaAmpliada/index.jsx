@@ -4,9 +4,9 @@ import { PostContainer } from "@/components/UI/PostContainer";
 import { BtnPrimary, BtnDanger } from "@/components/UI/Buttons";
 import { useLocation } from "react-router-dom";
 import { useToast } from "@/components/UI/Toast";
-import * as classes from "./PropuestaAmpliada.module.css";
+import * as classes from "./OfertaAmpliada.module.css";
 
-function PropuestaAmpliada() {
+function OfertaAmpliada() {
   const locationData = useLocation();
   const { showToast } = useToast();
   const post = locationData.state || {};
@@ -49,4 +49,5 @@ function PropuestaAmpliada() {
     </PagesTemplate>
   );
 }
-export default PropuestaAmpliada;
+
+export default OfertaAmpliada;

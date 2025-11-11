@@ -1,13 +1,14 @@
 import React from "react";
 import PagesTemplate from "@/components/UI/PagesTemplate";
 import { PostContainer } from "@/components/UI/PostContainer";
-import { BtnPrimary, BtnDanger } from "@/components/UI/Buttons";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import { BtnSecondary, BtnDanger } from "@/components/UI/Buttons";
 import { useToast } from "@/components/UI/Toast";
-import * as classes from "./PropuestaAmpliada.module.css";
+import * as classes from "./MiPublicacionAmpliada.module.css";
 
-function PropuestaAmpliada() {
+function MiPublicacionAmpliada() {
   const locationData = useLocation();
+  const navigate = useNavigate();
   const { showToast } = useToast();
   const post = locationData.state || {};
 
@@ -24,23 +25,24 @@ function PropuestaAmpliada() {
           />
           <div className={classes.actionsWrap}>
             <div className={classes.leftAction}>
-              <BtnPrimary
-                text="Me Interesa"
-                className={classes.primaryBtn}
-                divClassName={classes.primaryBtnLabel}
+              <BtnSecondary
+                text="Modificar"
+                className={classes.secondaryBtn}
+                divClassName={classes.secondaryBtnLabel}
                 size="sm"
-                onClick={() =>
-                  showToast("Has marcado 'Me interesa' a esta propuesta.")
-                }
+                onClick={() => navigate("/modificar-publicacion", { state: post })}
               />
             </div>
             <div className={classes.rightAction}>
               <BtnDanger
-                text="Reportar"
+                text="Eliminar"
                 className={classes.dangerBtn}
                 divClassName={classes.dangerBtnLabel}
                 size="sm"
-                onClick={() => showToast("Has reportado esta publicación.")}
+                onClick={() => {
+                  const ok = window.confirm("¿Seguro que quieres eliminar esta publicación?");
+                  if (ok) showToast("Publicación eliminada.");
+                }}
               />
             </div>
           </div>
@@ -49,4 +51,5 @@ function PropuestaAmpliada() {
     </PagesTemplate>
   );
 }
-export default PropuestaAmpliada;
+
+export default MiPublicacionAmpliada;

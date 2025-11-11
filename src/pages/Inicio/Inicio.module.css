@@ -148,7 +148,7 @@
 
 .textWrapper4 {
   color: #000000;
-  font-family: "Roboto-Light", Helvetica;
+  font-family: "Roboto", Helvetica;
   font-size: 24px;
   font-weight: 300;
   height: 28px;
@@ -216,7 +216,7 @@
 
 .feedHeader {
   color: var(--textprimary);
-  font-family: "Reddit Mono-Regular", Helvetica;
+  font-family: "Roboto", Helvetica;
   font-size: 20px;
   margin: 0 0 12px 0;
 }

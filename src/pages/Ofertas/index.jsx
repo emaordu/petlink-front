@@ -1,6 +1,8 @@
 import React from "react";
 import PagesTemplate from "@/components/UI/PagesTemplate";
 import { CardsFeed } from "@/components/UI/Cards";
+import { useNavigate } from "react-router-dom";
+import * as classes from "./Ofertas.module.css";
 
 const mockItems = [
   {
@@ -75,10 +77,18 @@ const mockItems = [
 ];
 
 function Ofertas() {
+  const navigate = useNavigate();
   return (
     <PagesTemplate onNewPostClick={() => {}}>
-      <h2 style={{ margin: "8px 16px", color: "var(--textprimary)" }}>Ofertas</h2>
-      <CardsFeed items={mockItems} />
+      <main className={classes.page}>
+        <h2 className={classes.title}>Ofertas</h2>
+        <div className={classes.feedWrap}>
+          <CardsFeed
+            items={mockItems}
+            onCardClick={(item) => navigate("/oferta-ampliada", { state: item })}
+          />
+        </div>
+      </main>
     </PagesTemplate>
   );
 }

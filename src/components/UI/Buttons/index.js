@@ -8,4 +8,5 @@ export { BtnLink } from './BtnLink';
 export { BtnOfertas } from './BtnOfertas';
 export { BtnPropuestas } from './BtnPropuestas';
 export { BtnSecondary } from './BtnSecondary';
-// Nota: BtnDanger se elimina del índice porque su archivo está vacío/indefinido.
+export { BtnDanger } from './BtnDanger';
+// Exportamos BtnDanger para el botón "Reportar".

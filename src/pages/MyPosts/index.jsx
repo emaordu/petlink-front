@@ -1,6 +1,8 @@
 import React from "react";
 import PagesTemplate from "@/components/UI/PagesTemplate";
 import { CardsFeed } from "@/components/UI/Cards";
+import * as classes from "./MyPosts.module.css";
+import { useNavigate } from "react-router-dom";
 
 const mockMyPosts = [
   {
@@ -38,10 +40,18 @@ const mockMyPosts = [
 ];
 
 function MyPosts() {
+  const navigate = useNavigate();
+  const handleCardClick = (post) => {
+    navigate("/mi-publicacion-ampliada", { state: post });
+  };
   return (
     <PagesTemplate>
-      <h2 style={{ margin: "8px 16px", color: "var(--textprimary)" }}>Mis Publicaciones</h2>
-      <CardsFeed items={mockMyPosts} />
+      <main className={classes.page}>
+        <h2 className={classes.title}>Mis Publicaciones</h2>
+        <div className={classes.feedWrap}>
+          <CardsFeed items={mockMyPosts} onCardClick={handleCardClick} />
+        </div>
+      </main>
     </PagesTemplate>
   );
 }

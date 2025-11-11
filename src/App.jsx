@@ -13,6 +13,10 @@ import UserConfig from '@/pages/UserConfig';
 import CrearOferta from '@/pages/CrearOferta';
 import CrearPropuesta from '@/pages/CrearPropuesta';
 import Propuestas from '@/pages/Propuestas';
+import PropuestaAmpliada from '@/pages/PropuestaAmpliada';
+import OfertaAmpliada from '@/pages/OfertaAmpliada';
+import MiPublicacionAmpliada from '@/pages/MiPublicacionAmpliada';
+import ModificarPublicacion from '@/pages/ModificarPublicacion';
 
 function App() {
   return (
@@ -26,6 +30,10 @@ function App() {
         <Route path="/inicio" element={<Inicio />} />
         <Route path="/ofertas" element={<Ofertas />} />
         <Route path="/propuestas" element={<Propuestas />} />
+        <Route path="/propuesta-ampliada" element={<PropuestaAmpliada />} />
+        <Route path="/oferta-ampliada" element={<OfertaAmpliada />} />
+        <Route path="/mi-publicacion-ampliada" element={<MiPublicacionAmpliada />} />
+        <Route path="/modificar-publicacion" element={<ModificarPublicacion />} />
         <Route path="/mis-publicaciones" element={<MyPosts />} />
         <Route path="/perfil" element={<Profile />} />
         <Route path="/configuracion" element={<UserConfig />} />

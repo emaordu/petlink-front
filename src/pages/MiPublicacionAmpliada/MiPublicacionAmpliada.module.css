@@ -1,0 +1,38 @@
+/* Página de Mi Publicación Ampliada - mobile-first (sin botones de acción) */
+.page { padding: 16px; }
+
+.contentWrap {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.secondaryBtnLabel {
+  font-family: "Preahvihear", Helvetica;
+  font-size: clamp(14px, 1.8vw, 16px);
+  font-weight: 400;
+}
+
+.secondaryBtn { display: inline-flex; }
+
+.dangerBtnLabel {
+  font-family: "Preahvihear", Helvetica;
+  font-size: clamp(14px, 1.8vw, 16px);
+  font-weight: 400;
+}
+
+.dangerBtn { display: inline-flex; }
+
+/* Acciones alineadas respecto al contentWrap */
+.actionsWrap {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  margin-top: 10px;
+}
+.leftAction { justify-self: start; }
+.rightAction { justify-self: end; }
+
+@media (min-width: 768px) {
+  .page { padding: 20px; }
+}

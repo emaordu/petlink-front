@@ -1,4 +1,4 @@
-import React, { useMemo, useRef, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import * as classes from "./CreatePostForm.module.css";
 import { BtnPrimary } from "@/components/UI/Buttons";
 import { BtnSecondary } from "@/components/UI/Buttons";
@@ -7,15 +7,16 @@ import LocationAutocomplete from "@/components/UI/CreatePostForm/LocationAutocom
 import { useNavigate } from "react-router-dom";
 import { useToast } from "@/components/UI/Toast";
 
-export default function CreatePostForm({ type = "oferta" }) {
+export default function CreatePostForm({ type = "oferta", mode = "create", initialData = {} }) {
   const navigate = useNavigate();
   const { showToast } = useToast?.() || { showToast: () => {} };
 
-  const [title, setTitle] = useState("");
-  const [category, setCategory] = useState(null);
-  const [location, setLocation] = useState("");
-  const [message, setMessage] = useState("");
+  const [title, setTitle] = useState(initialData.title || "");
+  const [category, setCategory] = useState(initialData.category || null);
+  const [location, setLocation] = useState(initialData.location || "");
+  const [message, setMessage] = useState(initialData.description || "");
   const [files, setFiles] = useState([]);
+  const [previews, setPreviews] = useState([]);
 
   const maxTitle = 30;
   const fileInputRef = useRef(null);
@@ -45,9 +46,32 @@ export default function CreatePostForm({ type = "oferta" }) {
     fileInputRef.current?.click();
   }
 
+  const MAX_FILES = 6;
+  const MAX_SIZE_MB = 5; // por archivo
+
   function onFilesSelected(e) {
-    const sel = Array.from(e.target.files || []);
-    setFiles(sel);
+    const incoming = Array.from(e.target.files || []);
+    const merged = [...files, ...incoming];
+    const filtered = merged.filter((f) => f.size <= MAX_SIZE_MB * 1024 * 1024).slice(0, MAX_FILES);
+    if (incoming.length !== filtered.length - files.length) {
+      showToast?.(`Algunos archivos superan ${MAX_SIZE_MB}MB y fueron omitidos`, { type: "warning" });
+    }
+    if (merged.length > MAX_FILES) {
+      showToast?.(`Máximo ${MAX_FILES} archivos permitidos`, { type: "warning" });
+    }
+    setFiles(filtered);
+  }
+
+  useEffect(() => {
+    const urls = files.map((f) => ({ file: f, url: URL.createObjectURL(f) }));
+    setPreviews(urls);
+    return () => { urls.forEach((u) => URL.revokeObjectURL(u.url)); };
+  }, [files]);
+
+  function removeFile(idx) {
+    const next = files.slice();
+    next.splice(idx, 1);
+    setFiles(next);
   }
 
   function onSubmit() {
@@ -57,16 +81,27 @@ export default function CreatePostForm({ type = "oferta" }) {
     }
     const confirm = window.confirm("¿Deseas publicar esta " + (type === "propuesta" ? "propuesta" : "oferta") + "?");
     if (!confirm) return;
-    // TODO: Enviar al backend. Por ahora redirigimos a Mis Publicaciones
+    // TODO: Enviar al backend. Simulamos creación y vamos a la página ampliada
+    const newPost = {
+      title: title.trim(),
+      description: message.trim(),
+      imageUrl: null, // podría mapearse desde files
+      location: location.trim(),
+      publishedAt: "justo ahora",
+    };
     showToast?.("Publicación creada", { type: "success" });
-    navigate("/mis-publicaciones");
+    if (type === "propuesta") {
+      navigate("/propuesta-ampliada", { state: newPost });
+    } else {
+      navigate("/oferta-ampliada", { state: newPost });
+    }
   }
 
   return (
     <form className={classes.form} onSubmit={(e) => { e.preventDefault(); onSubmit(); }}>
       {/* Encabezado dinámico */}
       <h1 className={classes.titleHeading}>
-        {type === "propuesta" ? "Publicar propuesta" : "Publicar oferta"}
+        {mode === "edit" ? "Modificar publicación" : (type === "propuesta" ? "Publicar propuesta" : "Publicar oferta")}
       </h1>
 
       {/* Título */}
@@ -108,7 +143,7 @@ export default function CreatePostForm({ type = "oferta" }) {
 
       {/* Adjuntar archivos */}
       <div className={classes.attachRow}>
-        <BtnSecondary text="Adjuntar Archivos" onClick={onAttachClick} />
+        <BtnSecondary text="Adjuntar Archivos" onClick={onAttachClick} size="sm" />
         <input
           ref={fileInputRef}
           type="file"
@@ -118,9 +153,24 @@ export default function CreatePostForm({ type = "oferta" }) {
           className={classes.hiddenInput}
         />
         {files.length > 0 && (
-          <span className={classes.attachInfo}>{files.length} archivo(s) seleccionado(s)</span>
+          <span className={classes.attachInfo}>{files.length} archivo(s) (máx {MAX_FILES}, {MAX_SIZE_MB}MB c/u)</span>
         )}
       </div>
+
+      {previews.length > 0 && (
+        <div className={classes.previewGrid}>
+          {previews.map((p, idx) => (
+            <div key={idx} className={classes.previewItem}>
+              {p.file.type.startsWith("image/") ? (
+                <img src={p.url} alt={`archivo ${idx+1}`} className={classes.previewThumb} />
+              ) : (
+                <video src={p.url} className={classes.previewThumb} muted />
+              )}
+              <button type="button" className={classes.removeBtn} onClick={() => removeFile(idx)}>✕</button>
+            </div>
+          ))}
+        </div>
+      )}
 
       {/* Mensaje */}
       <div className={classes.fieldGroup}>
@@ -139,7 +189,7 @@ export default function CreatePostForm({ type = "oferta" }) {
 
       {/* Publicar */}
       <div className={classes.actions}>
-        <BtnPrimary text="Publicar" onClick={onSubmit} />
+        <BtnPrimary text={mode === "edit" ? "Guardar cambios" : "Publicar"} onClick={onSubmit} size="sm" />
       </div>
     </form>
   );

@@ -60,7 +60,19 @@ export const LandingPage = () => {
           <BtnPrimary
             className={classes.btnPrimary}
             divClassName={classes.btnPrimaryText}
-            onClick={() => navigate('/inicio')}
+            onClick={() => {
+              try {
+                const hasUser = !!localStorage.getItem('user');
+                const hasToken = !!localStorage.getItem('authToken');
+                if (!hasUser && !hasToken) {
+                  navigate('/register');
+                } else {
+                  navigate('/inicio');
+                }
+              } catch (e) {
+                navigate('/register');
+              }
+            }}
             propiedad1="predeterminado"
             text="Explorar publicaciones"
           />

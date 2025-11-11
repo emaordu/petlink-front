@@ -1,17 +1,18 @@
 .btnSecondary {
-  background-color: var(--bordersbackground);
+  background-color: var(--accent);
   border: 2px solid var(--primary-green-dark);
   border-radius: 20px;
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
 
-  padding: 0 12px;
+  padding: 10px 20px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: 10px;
   
   /* Transiciones y cursor */
   cursor: pointer;
-  transition: all 0.2s ease-out;
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s;
 }
 
 .btnSecondary:hover {
@@ -25,5 +26,10 @@
   background-color: var(--primary-green-light);
   border-color: var(--primary-green);
   color: var(--textprimary);
-  transform: translateY(0);
+}
+
+.label { font-family: "Preahvihear", Helvetica; font-size: 16px; font-weight: 400; }
+
+@media (min-width: 768px) {
+  .btnSecondary { padding: 12px 20px; }
 }

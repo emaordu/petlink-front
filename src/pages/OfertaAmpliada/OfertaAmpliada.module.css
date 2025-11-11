@@ -1,0 +1,45 @@
+/* Página de Oferta Ampliada - mobile-first */
+.page {
+  padding: 16px;
+}
+
+.contentWrap {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+/* Tipografía del botón primario "Me Interesa" alineada con otros btnprimary */
+.primaryBtnLabel {
+  font-family: "Preahvihear", Helvetica;
+  font-size: clamp(16px, 2vw, 20px);
+  font-weight: 400;
+}
+
+.primaryBtn {
+  display: inline-flex;
+}
+
+.dangerBtnLabel {
+  font-family: "Preahvihear", Helvetica;
+  font-size: clamp(16px, 2vw, 20px);
+  font-weight: 400;
+}
+
+.dangerBtn {
+  display: inline-flex;
+}
+
+/* Acciones alineadas respecto al contentWrap */
+.actionsWrap {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  margin-top: 10px;
+}
+.leftAction { justify-self: start; }
+.rightAction { justify-self: end; }
+
+@media (min-width: 768px) {
+  .page { padding: 20px; }
+}
