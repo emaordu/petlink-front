@@ -55,6 +55,7 @@
   grid-template-columns: 1fr 1fr;
   align-items: center;
   margin-top: 8px;
+  grid-column: 1 / -1;
 }
 
 .leftAction { justify-self: start; }
@@ -62,22 +63,26 @@
 
 @media (min-width: 768px) {
   .container { padding: 20px; border-radius: 16px; }
+  .actions { grid-template-columns: 1fr 1fr; }
 }
 
 /* Desktop amplio: dar más aire al texto y crecer imagen */
 @media (min-width: 900px) {
   .container { grid-template-columns: 1.3fr minmax(260px, 360px); }
   .image { height: 200px; }
+  .actions { grid-template-columns: 1fr 1fr; }
 }
 
 /* Monitores grandes: dar protagonismo adicional a la imagen */
 @media (min-width: 1200px) {
   .container { grid-template-columns: 1.2fr minmax(320px, 480px); }
   .image { height: 240px; }
+  .actions { grid-template-columns: 1fr 1fr; }
 }
 
 @media (max-width: 900px) {
   .container { grid-template-columns: 1fr; }
   .image { height: 160px; }
+  .actions { grid-template-columns: 1fr 1fr; }
 }
 

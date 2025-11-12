@@ -1,26 +1,33 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { BtnLink } from "@/components/UI/Buttons/BtnLink";
-import { CardMainpage } from "@/components/UI/CardMainpage";
-import { PagesTemplate } from "@/components/UI/PagesTemplate";
+import { FeedCard } from "@/components/UI/Cards";
+import PagesTemplate from "@/components/UI/PagesTemplate";
 import badgeCat from "@/assets/images/badge-Cat.png";
 import registerDog from "@/assets/images/register-Dog.png";
 import styles from "./Inicio.module.css";
 import ContributionPanel from "@/components/UI/Community/ContributionPanel";
 import DonatorPanel from "@/components/UI/Community/DonatorPanel";
+import { ofertasData, propuestasData } from '@/data/data';
 
-export const Inicio = () => {
+const Inicio = () => {
   const navigate = useNavigate();
 
-  // 1. Obtienes los datos del usuario
   const userData = {
-    profilePic: "https://url-de-la-foto-del-usuario.com/img.png"
+    profilePic: "https://url-de-la-foto-del-usuario.com/img.png" /*mock por el momento*/
   };
 
-  // 2. Creas la función para el menú
   const handleOpenMenu = () => {
     console.log("Abrir menú desplegable");
   };
+
+  const latestPropuesta = propuestasData.sort((a, b) => {
+    return new Date(b.publishedAt) - new Date(a.publishedAt);
+  })[0];
+
+  const latestOferta = ofertasData.sort((a, b) => {
+    return new Date(b.publishedAt) - new Date(a.publishedAt);
+  })[0];
 
   return (
     <PagesTemplate
@@ -28,24 +35,35 @@ export const Inicio = () => {
       onProfileClick={handleOpenMenu}
       onNewPostClick={(tipo) => navigate(tipo === 'propuesta' ? '/crear-propuesta' : '/crear-oferta')}
     >
-      {/* Contenido principal con enfoque mobile-first */}
       <main className={styles.contentGrid}>
-        {/* Columna izquierda: Feed de cards */}
         <section className={styles.feedSection}>
-          <h2 className={styles.feedHeader}>Ultimas ofertas/propuestas:</h2>
+          <h2 className={styles.feedHeader}>Últimas ofertas/propuestas:</h2>
           <div className={styles.cardsList}>
-            <CardMainpage
-              text="Transito urgente para dos cachorros"
-              text1="Rescatamos a dos hermanitos de aprox. 45 días. Necesitan un hogar temporal seguro por un mes mientras gestionamos sus vacunas y adopción. Son pequeños, no ocupan mucho espacio."
-              text2="Alsina"
-              text3="Publicado hace: 3m"
-            />
-            <CardMainpage
-              text="Ofrezco transito para perro pequeño"
-              text1="Tengo lugar en mi casa para un perrito en transito. Vivo sola, tengo patio pequeño cerrado y experiencia. No puedo con gatos."
-              text2="Baradero"
-              text3="Publicado hace: 4m"
-            />
+            <h3 className={styles.cardTitle}>Última Propuesta:</h3>
+            {latestPropuesta && (
+              <Link to={`/propuesta-ampliada/${latestPropuesta.id}`} state={latestPropuesta} className={styles.cardLink}>
+                <FeedCard
+                  title={latestPropuesta.title}
+                  description={latestPropuesta.description}
+                  imageUrl={latestPropuesta.imageUrl}
+                  location={latestPropuesta.location}
+                  publishedAt={latestPropuesta.publishedAt}
+                />
+              </Link>
+            )}
+
+            <h3 className={styles.cardTitle}>Última Oferta:</h3>
+            {latestOferta && (
+              <Link to={`/oferta-ampliada/${latestOferta.id}`} state={latestOferta} className={styles.cardLink}>
+                <FeedCard
+                  title={latestOferta.title}
+                  description={latestOferta.description}
+                  imageUrl={latestOferta.imageUrl}
+                  location={latestOferta.location}
+                  publishedAt={latestOferta.publishedAt}
+                />
+              </Link>
+            )}
           </div>
           <div className={styles.notifications}>
             <span className={styles.notificationText}>Tienes nuevas notificaciones.</span>
@@ -53,7 +71,6 @@ export const Inicio = () => {
           </div>
         </section>
 
-        {/* Columna derecha: Paneles resumidos */}
         <aside className={styles.sidebar}>
           <ContributionPanel contributionsCount={4} imageUrl={registerDog} />
           <DonatorPanel donorsTotal={200} imageUrl={badgeCat} />
@@ -62,4 +79,5 @@ export const Inicio = () => {
     </PagesTemplate>
   );
 };
+
 export default Inicio;
