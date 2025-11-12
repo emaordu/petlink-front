@@ -6,6 +6,7 @@ export const ofertasData = [
     imageUrl: "https://images.unsplash.com/photo-1583337130417-3346a1be7dee?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     location: "Palermo, CABA",
     publishedAt: "2023-10-26T10:00:00Z",
+    type: "oferta",
   },
   {
     id: "oferta-2",
@@ -14,6 +15,7 @@ export const ofertasData = [
     imageUrl: "https://images.unsplash.com/photo-1544723795-3fb6469e0453?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     location: "Belgrano, CABA",
     publishedAt: "2023-10-25T14:30:00Z",
+    type: "oferta",
   },
   {
     id: "oferta-3",
@@ -22,6 +24,7 @@ export const ofertasData = [
     imageUrl: "https://images.unsplash.com/photo-1598133894008-61f7fdb8a8c3?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     location: "Caballito, CABA",
     publishedAt: "2023-10-24T18:00:00Z",
+    type: "oferta",
   },
   {
     id: "oferta-4",
@@ -30,6 +33,7 @@ export const ofertasData = [
     imageUrl: "https://images.unsplash.com/photo-1574158622682-e40e69881790?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     location: "Recoleta, CABA",
     publishedAt: "2023-10-23T09:00:00Z",
+    type: "oferta",
   },
   {
     id: "oferta-5",
@@ -38,6 +42,7 @@ export const ofertasData = [
     imageUrl: "https://images.unsplash.com/photo-1591768794321-ed792270f558?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     location: "Villa Crespo, CABA",
     publishedAt: "2023-10-22T11:00:00Z",
+    type: "oferta",
   },
 ];
 
@@ -48,7 +53,8 @@ export const propuestasData = [
     description: "Necesito un paseador de perros para mi golden retriever, Max, tres veces por semana. Preferentemente por la tarde.",
     imageUrl: "https://images.unsplash.com/photo-1561037404-61cd46bd61e1?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     location: "Palermo, CABA",
-    publishedAt: "2023-10-26T11:00:00Z",
+    publishedAt: "2025-10-26T11:00:00Z",
+    type: "propuesta",
   },
   {
     id: "propuesta-2",
@@ -57,6 +63,7 @@ export const propuestasData = [
     imageUrl: "https://images.unsplash.com/photo-1514888627702-cf5049220355?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     location: "Colegiales, CABA",
     publishedAt: "2023-10-25T16:00:00Z",
+    type: "propuesta",
   },
   {
     id: "propuesta-3",
@@ -65,6 +72,7 @@ export const propuestasData = [
     imageUrl: "https://images.unsplash.com/photo-1537151607728-fdf4de84624e?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     location: "Nuñez, CABA",
     publishedAt: "2023-10-24T12:00:00Z",
+    type: "propuesta",
   },
   {
     id: "propuesta-4",
@@ -73,6 +81,7 @@ export const propuestasData = [
     imageUrl: "https://images.unsplash.com/photo-1548199973-03cce0fd8f44?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     location: "Flores, CABA",
     publishedAt: "2023-10-23T15:00:00Z",
+    type: "propuesta",
   },
   {
     id: "propuesta-5",
@@ -81,5 +90,49 @@ export const propuestasData = [
     imageUrl: "https://images.unsplash.com/photo-1596854341016-a730a731c6b7?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     location: "Almagro, CABA",
     publishedAt: "2023-10-22T10:00:00Z",
+    type: "propuesta",
+  },
+];
+
+export const myPostsData = [
+  {
+    id: "mypost-1",
+    title: "Mi publicación: donación de mantas",
+    description: "Tengo mantas en buen estado para refugio local.",
+    imageUrl:
+      "https://images.unsplash.com/photo-1523413651479-597eb2da0ad6?w=600&auto=format&fit=crop",
+    location: "Baradero",
+    publishedAt: "2023-10-26T08:00:00Z",
+    type: "propuesta",
+  },
+  {
+    id: "mypost-2",
+    title: "Mi publicación: traslado",
+    description: "Puedo ayudar con traslado dentro de la ciudad.",
+    imageUrl:
+      "https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=600&auto=format&fit=crop",
+    location: "Zárate",
+    publishedAt: "2023-10-26T07:00:00Z",
+    type: "oferta",
+  },
+  {
+    id: "mypost-3",
+    title: "Mi publicación: alimento",
+    description: "Dono 10kg de alimento balanceado.",
+    imageUrl:
+      "https://images.unsplash.com/photo-1583337130417-3346a1be7dee?w=600&auto=format&fit=crop",
+    location: "Alsina",
+    publishedAt: "2023-10-26T05:00:00Z",
+    type: "propuesta",
+  },
+  {
+    id: "mypost-4",
+    title: "Mi publicación: juguetes",
+    description: "Varios juguetes en buen estado.",
+    imageUrl:
+      "https://images.unsplash.com/photo-1548192748-3f2b9c0b3c48?w=600&auto=format&fit=crop",
+    location: "Campana",
+    publishedAt: "2023-10-26T04:00:00Z",
+    type: "oferta",
   },
 ];

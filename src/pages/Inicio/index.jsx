@@ -8,7 +8,7 @@ import registerDog from "@/assets/images/register-Dog.png";
 import styles from "./Inicio.module.css";
 import ContributionPanel from "@/components/UI/Community/ContributionPanel";
 import DonatorPanel from "@/components/UI/Community/DonatorPanel";
-import { ofertasData, propuestasData } from '@/data/data';
+import { ofertasData, propuestasData, myPostsData } from '@/data/data';
 
 const Inicio = () => {
   const navigate = useNavigate();
@@ -21,13 +21,30 @@ const Inicio = () => {
     console.log("Abrir menú desplegable");
   };
 
-  const latestPropuesta = propuestasData.sort((a, b) => {
-    return new Date(b.publishedAt) - new Date(a.publishedAt);
-  })[0];
+  const allPosts = [...ofertasData, ...propuestasData, ...myPostsData];
+  // console.log("All Posts:", allPosts);
 
-  const latestOferta = ofertasData.sort((a, b) => {
-    return new Date(b.publishedAt) - new Date(a.publishedAt);
-  })[0];
+  const sortedPropuestas = allPosts
+    .filter((post) => post.type === "propuesta")
+    .sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt));
+  const latestPropuesta = sortedPropuestas[0];
+  // console.log(
+  //   "Latest Propuesta ID:",
+  //   latestPropuesta?.id,
+  //   "Published At:",
+  //   latestPropuesta?.publishedAt
+  // );
+
+  const sortedOfertas = allPosts
+    .filter((post) => post.type === "oferta")
+    .sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt));
+  const latestOferta = sortedOfertas[0];
+  // console.log(
+  //   "Latest Oferta ID:",
+  //   latestOferta?.id,
+  //   "Published At:",
+  //   latestOferta?.publishedAt
+  // );
 
   return (
     <PagesTemplate
