@@ -1,0 +1,58 @@
+/* Contenedor base: mismo enfoque responsive que PagesTemplate */
+.bgTemplateBack {
+  background-color: var(--bordersbackground);
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  background-color: var(--primary-green);
+  border-radius: 0 0 24px 24px;
+  height: 70px;
+  width: 100%;
+  padding: 0 28px;
+  box-sizing: border-box;
+  box-shadow: 0 8px 20px -8px rgba(0, 0, 0, 0.35);
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+}
+
+.leftGroup {
+  display: flex;
+  align-items: center;
+}
+
+.centerGroup {
+  display: flex;
+  align-items: center;
+  justify-self: center;
+  gap: 16px;
+  min-width: 0;
+}
+
+.rightGroup {
+  display: flex;
+  align-items: center;
+}
+
+.content {
+  flex: 1;
+  padding: 16px;
+}
+
+@media (min-width: 900px) {
+  .content { padding: 24px; }
+}
+
+@media (max-width: 640px) {
+  .header { height: 64px; padding: 0 16px; }
+  .centerGroup { gap: 8px; }
+}
+
+@media (max-width: 420px) {
+  .header { height: 56px; padding: 0 12px; }
+  .centerGroup { gap: 6px; }
+}

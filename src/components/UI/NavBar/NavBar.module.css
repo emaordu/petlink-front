@@ -84,9 +84,8 @@
     height: 64px;
     padding: 0 16px;
   }
-  .misChats {
-    font-size: 20px;
-  }
+  .chatButton { width: 32px; height: 32px; }
+  .chatIcon { width: 24px; height: 24px; }
   .rightGroup {
     gap: 16px;
   }
@@ -97,9 +96,7 @@
 
 /* Reducir contenido en pantallas muy pequeñas para evitar overflow */
 @media (max-width: 480px) {
-  .misChats { display: none; }
-  .chatButton { width: 32px; height: 32px; }
-  .chatIcon { width: 24px; height: 24px; }
+  /* sin cambios específicos para el icono aquí */
 }
 
 /* Ultra-compacto para 390px de ancho (iPhone 12 Pro) */
@@ -111,6 +108,4 @@
   .centerGroup { gap: 6px; }
   .rightGroup { gap: 12px; }
   .profileButton { width: 44px; height: 44px; }
-  .chatButton { width: 28px; height: 28px; }
-  .chatIcon { width: 22px; height: 22px; }
 }

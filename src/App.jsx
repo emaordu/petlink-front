@@ -17,6 +17,10 @@ import PropuestaAmpliada from '@/pages/PropuestaAmpliada';
 import OfertaAmpliada from '@/pages/OfertaAmpliada';
 import MiPublicacionAmpliada from '@/pages/MiPublicacionAmpliada';
 import ModificarPublicacion from '@/pages/ModificarPublicacion';
+import BackOfficeDashboard from '@/pages/BackOffice/Dashboard';
+import BackOfficeUsuarios from '@/pages/BackOffice/Usuarios';
+import BackOfficeReportes from '@/pages/BackOffice/Reportes';
+import BackOfficeModeradores from '@/pages/BackOffice/Moderadores';
 
 function App() {
   return (
@@ -39,7 +43,11 @@ function App() {
         <Route path="/configuracion" element={<UserConfig />} />
         <Route path="/crear-oferta" element={<CrearOferta />} />
         <Route path="/crear-propuesta" element={<CrearPropuesta />} />
-      </Routes>
+        <Route path="/back-office/dashboard" element={<BackOfficeDashboard />} />
+        <Route path="/back-office/usuarios" element={<BackOfficeUsuarios />} />
+        <Route path="/back-office/reportes" element={<BackOfficeReportes />} />
+        <Route path="/back-office/moderadores" element={<BackOfficeModeradores />} />
+        </Routes>
     </div>
   );
 }

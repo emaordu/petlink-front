@@ -4,7 +4,6 @@ import { useLocation } from "react-router-dom";
 import * as classes from "./NavBar.module.css";
 
 import { BtnOfertas } from "@/components/UI/Buttons/BtnOfertas";
-import { BtnPropuestas } from "@/components/UI/Buttons/BtnPropuestas";
 import { BtnHome } from "@/components/UI/Buttons/BtnHome";
 
 import defaultAvatar from "@/assets/images/icons/Profile.png";
@@ -12,6 +11,7 @@ import chatIcon from "@/assets/images/icons/Chat.png";
 import { useChat } from "@/context/ChatContext";
 import { MenuDesplegable } from "@/components/UI/Menu";
 import { useToast } from "@/components/UI/Toast";
+import { BtnPropuestas } from "@/components/UI/Buttons/BtnPropuestas";
 
 export const NavBar = ({ userImageUrl, onProfileClick }) => {
   const navigate = useNavigate();
@@ -20,6 +20,7 @@ export const NavBar = ({ userImageUrl, onProfileClick }) => {
   const rightGroupRef = useRef(null);
   const { toggleChat } = useChat();
   const { showToast } = useToast();
+  const [isAdmin, setIsAdmin] = useState(false);
   const handleLogout = () => {
     try {
       localStorage.removeItem("authToken");
@@ -40,6 +41,36 @@ export const NavBar = ({ userImageUrl, onProfileClick }) => {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [menuOpen]);
 
+ useEffect(() => {
+  const checkAdmin = () => {
+    try {
+      // MODO DESARROLLO: ?dev=admin
+      const urlParams = new URLSearchParams(window.location.search);
+      const devMode = urlParams.get("dev") === "admin";
+
+      const raw = localStorage.getItem("user");
+      const parsed = raw ? JSON.parse(raw) : null;
+      
+      setIsAdmin(devMode || parsed?.role === "admin");
+    } catch {
+      setIsAdmin(false);
+    }
+  };
+
+  // Ejecutar al montar
+  checkAdmin();
+
+  // Escuchar cambios de URL (cuando cambias ?dev=admin)
+  const handleLocationChange = () => checkAdmin();
+  window.addEventListener("popstate", handleLocationChange);
+  window.addEventListener("pushstate", handleLocationChange); // si usas navigate
+
+  return () => {
+    window.removeEventListener("popstate", handleLocationChange);
+    window.removeEventListener("pushstate", handleLocationChange);
+  };
+}, []);
+
   return (
     <div className={classes.navbar}>
       {/* Izquierda: Home */}
@@ -49,6 +80,13 @@ export const NavBar = ({ userImageUrl, onProfileClick }) => {
 
       {/* Centro: Propuestas y Ofertas, siempre centrados */}
       <div className={classes.centerGroup}>
+        {isAdmin && (
+          <BtnPropuestas
+            active={location.pathname.startsWith("/back-office")}
+            text="Back Office"
+            onClick={() => navigate("/back-office/dashboard")}
+          />
+        )}
         <BtnPropuestas
           className={classes.btnPropuestas}
           active={location.pathname === "/propuestas"}

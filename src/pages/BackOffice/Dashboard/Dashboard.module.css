@@ -1,0 +1,26 @@
+.page { padding: 16px; }
+
+.title {
+  margin: 16px 0 24px 0;
+  color: var(--textprimary);
+  font-family: "Preahvihear", Helvetica;
+  font-size: clamp(26px, 3vw, 36px);
+  font-weight: 400;
+  text-align: center;
+}
+
+.cardsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(240px, 1fr));
+  gap: 16px;
+  align-items: start;
+  justify-items: center;
+}
+
+@media (max-width: 900px) {
+  .cardsGrid { grid-template-columns: repeat(2, minmax(220px, 1fr)); }
+}
+
+@media (max-width: 640px) {
+  .cardsGrid { grid-template-columns: 1fr; }
+}
