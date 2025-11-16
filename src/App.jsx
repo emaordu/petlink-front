@@ -8,7 +8,7 @@ import './App.css';
 import { NavBar } from '@/components/UI/NavBar';
 import Ofertas from '@/pages/Ofertas';
 import MyPosts from '@/pages/MyPosts';
-import Profile from '@/pages/Profile';
+import Perfil from '@/pages/Perfil';
 import UserConfig from '@/pages/UserConfig';
 import CrearOferta from '@/pages/CrearOferta';
 import CrearPropuesta from '@/pages/CrearPropuesta';
@@ -21,6 +21,7 @@ import BackOfficeDashboard from '@/pages/BackOffice/Dashboard';
 import BackOfficeUsuarios from '@/pages/BackOffice/Usuarios';
 import BackOfficeReportes from '@/pages/BackOffice/Reportes';
 import BackOfficeModeradores from '@/pages/BackOffice/Moderadores';
+import EditarPerfil from '@/pages/EditarPerfil';
 
 function App() {
   return (
@@ -36,10 +37,10 @@ function App() {
         <Route path="/propuestas" element={<Propuestas />} />
         <Route path="/propuesta-ampliada/:id" element={<PropuestaAmpliada />} />
         <Route path="/oferta-ampliada/:id" element={<OfertaAmpliada />} />
-        <Route path="/mi-publicacion-ampliada" element={<MiPublicacionAmpliada />} />
+        <Route path="/mi-publicacion-ampliada/:id" element={<MiPublicacionAmpliada />} />
         <Route path="/modificar-publicacion" element={<ModificarPublicacion />} />
         <Route path="/mis-publicaciones" element={<MyPosts />} />
-        <Route path="/perfil" element={<Profile />} />
+        <Route path="/perfil" element={<Perfil />} />
         <Route path="/configuracion" element={<UserConfig />} />
         <Route path="/crear-oferta" element={<CrearOferta />} />
         <Route path="/crear-propuesta" element={<CrearPropuesta />} />
@@ -47,7 +48,8 @@ function App() {
         <Route path="/back-office/usuarios" element={<BackOfficeUsuarios />} />
         <Route path="/back-office/reportes" element={<BackOfficeReportes />} />
         <Route path="/back-office/moderadores" element={<BackOfficeModeradores />} />
-        </Routes>
+        <Route path="/editar-perfil" element={<EditarPerfil />} />
+      </Routes>
     </div>
   );
 }
