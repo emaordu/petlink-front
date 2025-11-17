@@ -4,6 +4,7 @@ import * as classes from "./Cards.module.css";
 // Tarjeta del feed con estilo acorde al look & feel
 export const FeedCard = ({
   title,
+  category,
   description,
   imageUrl,
   location,
@@ -21,6 +22,7 @@ export const FeedCard = ({
     >
       <div className={classes.content}>
         <h3 className={classes.title}>{title}</h3>
+        {category && <p className={classes.category}>{category}</p>}
         <p className={classes.description}>{description}</p>
         <div className={classes.metaRow}>
           <span className={classes.location}>📍 {location}</span>
@@ -52,6 +54,7 @@ export const CardsFeed = ({ items = [], onCardClick }) => {
               <FeedCard
                 key={`${idx}-${j}`}
                 {...it}
+                category={it.category}
                 onClick={onCardClick ? () => onCardClick(it) : undefined}
               />
             ))}

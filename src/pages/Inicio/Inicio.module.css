@@ -1,277 +1,89 @@
-.container {
-  background-color: var(--bordersbackground);
-  width: 100%;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
-.navBar {
-  background-color: var(--primary-green);
-  box-shadow: 0px 4px 4px #00000040;
-  height: 70px;
-  position: relative;
-}
-
-.userImage {
-  aspect-ratio: 1.13;
-  height: 58px;
-  left: 91.25%;
-  object-fit: cover;
-  position: absolute;
-  top: 6px;
-  width: 5.08%;
-}
-
-.textWrapper2 {
-  align-items: center;
-  color: var(--accent);
-  display: flex;
-  font-family: "Roboto", Helvetica;
-  font-size: 32px;
-  font-weight: 400;
-  height: 42px;
-  justify-content: center;
-  left: 941px;
-  letter-spacing: 0;
-  line-height: normal;
-  position: absolute;
-  top: 14px;
-}
-
-.home {
-  display: flex;
-  height: 58px;
-  left: 19px;
-  position: absolute;
-  top: 6px;
-  width: 58px;
-}
-
-.img {
-  display: block;
-  flex: 1;
-  width: 58px;
-}
-
-
-.textWrapper3 {
-  color: #000000;
-  font-family: "Roboto", Helvetica;
-  font-size: 32px;
-  font-weight: 300;
-  left: 30px;
-  letter-spacing: 0;
-  line-height: normal;
-  position: absolute;
-  top: 75px;
-}
-
-.cantContribuido {
-  height: 20.56%;
-  left: 64.38%;
-  position: absolute;
-  top: 26.32%;
-  width: 34.77%;
-}
-
-.rectangle {
-  background-color: var(--primary-green-light);
-  height: 100%;
-  left: 0;
-  position: absolute;
-  top: 0;
-  width: 99.55%;
-}
-
-.imagen {
-  aspect-ratio: 1;
-  height: 134px;
-  left: 301px;
-  position: absolute;
-  top: calc(50% - 62px);
-  width: 134px;
-}
-
-.p {
-  color: var(--textprimary);
-  font-family: "Roboto", Helvetica;
-  font-size: 24px;
-  font-weight: 300;
-  left: 38px;
-  letter-spacing: 0;
-  line-height: normal;
-  position: absolute;
-  top: calc(50% - 42px);
-  width: 231px;
-}
-
-.topDonator {
-  height: 20.56%;
-  left: 64.38%;
-  position: absolute;
-  top: 52.29%;
-  width: 34.77%;
-}
-
-.estSEntreLos {
-  color: var(--textprimary);
-  font-family: "Roboto", Helvetica;
-  font-size: 24px;
-  font-weight: 300;
-  left: 38px;
-  letter-spacing: 0;
-  line-height: normal;
-  position: absolute;
-  top: calc(50% - 39px);
-  width: 231px;
-}
-
-.image2 {
-  aspect-ratio: 1;
-  height: 134px;
-  left: 301px;
-  object-fit: cover;
-  position: absolute;
-  top: calc(50% - 75px);
-  width: 134px;
-}
-
-.group {
-  display: flex;
-  height: 28px;
-  left: 30px;
-  position: absolute;
-  top: 650px;
-  width: 312px;
-}
-
-.textWrapper4 {
-  color: #000000;
-  font-family: "Roboto", Helvetica;
-  font-size: 24px;
-  font-weight: 300;
-  height: 28px;
-  letter-spacing: 0;
-  line-height: normal;
-  white-space: nowrap;
-  width: 310px;
-}
-
-.group2 {
-  height: 489px;
-  left: 30px;
-  position: absolute;
-  top: 148px;
-  width: 767px;
-}
-
-.rectangle2 {
-  background-color: var(--primary-green-light);
-  border: 1px solid;
-  border-color: #000000;
-  height: 489px;
-  left: 0;
-  position: absolute;
-  top: 0;
-  width: 765px;
-}
-
-
-.textWrapper5 {
-  color: #000000;
-  font-family: "Roboto", Helvetica;
-  font-size: 24px;
-  font-weight: 400;
-  left: calc(50% - 184px);
-  letter-spacing: 0;
-  line-height: normal;
-  position: absolute;
-  top: 9px;
-}
-
-
-/* ===== NUEVO: Layout mobile-first para Inicio ===== */
-.inicioPage {
-  background-color: var(--bordersbackground);
-  width: 100%;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
+/* ===== ESTRUCTURA PRINCIPAL (GRID) ===== */
 .contentGrid {
   display: grid;
-  grid-template-columns: 1fr;
-  /* móvil */
-  gap: 16px;
-  padding: 16px;
-}
+  grid-template-columns: 1fr; /* 1. Mobile-first: una sola columna */
+  gap: 24px;
+  
+  /* padding: [arriba] [lados] [abajo];
+    Añadimos 80px arriba para dejar espacio al botón flotante.
+  */
+  padding: 80px 0 16px;
 
+  width: 100%;
+  max-width: 1400px; 
+  margin: 0 auto; 
+  box-sizing: border-box;
+}
+/* 2. Desktop: Cuando la pantalla es > 900px, crea 2 columnas */
 @media (min-width: 900px) {
   .contentGrid {
+    /* Izquierda (feed) 1fr, Derecha (sidebar) 360px */
     grid-template-columns: 1fr minmax(250px, 360px);
-    /* izquierda: feed, derecha: sidebar */
-    align-items: center;
-    padding: 16px 32px 16px 16px;
+    padding: 24px 32px;
   }
 }
 
-.feedHeader {
-  color: var(--textprimary);
-  font-family: "Roboto", Helvetica;
-  font-size: 20px;
-  margin: 0 0 12px 0;
+
+/* ===== COLUMNA 1: FEED (.feed) ===== */
+.feed {
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Espacio entre el saludo, el botón y la lista */
 }
 
+/* Estilo para el "Bienvenido..." */
+.welcomeMessage {
+  color: var(--textprimary);
+  font-family: "Preahvihear", Helvetica;
+  font-size: 28px;
+  font-weight: 400;
+  margin: 0;
+}
+
+/* Estilo para el botón "Hecha un vistazo..." */
+.btnLinkInstance {
+  align-self: flex-start; /* Alinea el botón a la izquierda */
+}
+
+/* Contenedor para las tarjetas */
 .cardsList {
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  background-color: var(--primary-green-light);
-  border-radius: 12px;
-  padding: 12px;
-  border: 1px solid var(--bordersdivs);
+  gap: 24px;
 }
 
-.notifications {
-  margin-top: 12px;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  flex-wrap: wrap;
-}
-
-.notificationText {
-  font-family: "Roboto", Helvetica;
-  font-size: 20px;
-  /* igual al BtnLink.label */
-  color: var(--textprimary);
-}
-
-.notificationAction {
-  /* BtnLink inline y sin tamaño fijo */
-  display: inline-flex;
-  width: auto;
-  height: auto;
-}
-
-.sidebar {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
+/* Título de sección "Última Propuesta:" */
 .cardTitle {
-  font-family: "Roboto", Helvetica;
-  font-size: 18px;
   color: var(--textprimary);
-  margin: 16px 0 8px 0;
+  font-family: "Lato", Helvetica;
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0;
+  border-bottom: 2px solid var(--bordersdivs);
+  padding-bottom: 8px;
 }
 
+/* Wrapper del link de la tarjeta */
 .cardLink {
   text-decoration: none;
   color: inherit;
+  display: block; /* Asegura que el link ocupe el espacio */
 }
 
-/* panel styles moved into reusable components */
+
+/* ===== COLUMNA 2: SIDEBAR (.sidebar) ===== */
+/* Esta clase ya la tenías y es correcta */
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* En desktop, el sidebar se queda fijo al scrollear */
+@media (min-width: 900px) {
+  .sidebar {
+    position: sticky;
+    top: 90px; /* 70px (navbar) + 20px (padding) */
+    align-self: center; /* Centra la sidebar verticalmente */
+  }
+}

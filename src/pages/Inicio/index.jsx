@@ -54,7 +54,7 @@ const Inicio = () => {
     >
       <main className={styles.contentGrid}>
         <section className={styles.feedSection}>
-          <h2 className={styles.feedHeader}>Últimas ofertas/propuestas:</h2>
+
           <div className={styles.cardsList}>
             <h3 className={styles.cardTitle}>Última Propuesta:</h3>
             {latestPropuesta && (
@@ -81,10 +81,6 @@ const Inicio = () => {
                 />
               </Link>
             )}
-          </div>
-          <div className={styles.notifications}>
-            <span className={styles.notificationText}>Tienes nuevas notificaciones.</span>
-            <BtnLink className={styles.notificationAction} text="Echa un vistazo." onClick={() => navigate('/inicio')} />
           </div>
         </section>
 

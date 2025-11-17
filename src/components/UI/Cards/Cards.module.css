@@ -14,7 +14,6 @@
   cursor: pointer;
 }
 
-.content { }
 
 .title {
   color: var(--textprimary);
@@ -22,6 +21,15 @@
   font-size: clamp(18px, 2.2vw, 22px);
   font-weight: 400;
   margin: 0 0 8px 0;
+}
+
+.category {
+  color: var(--textsecondary);
+  font-family: "Lato", Helvetica;
+  font-size: clamp(12px, 1.5vw, 14px);
+  font-weight: 600;
+  margin: -4px 0 8px 0;
+  text-transform: capitalize;
 }
 
 .description {

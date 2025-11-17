@@ -7,6 +7,7 @@ export const ofertasData = [
     location: "Palermo, CABA",
     publishedAt: "2023-10-26T10:00:00Z",
     type: "oferta",
+    category: "Veterinaria",
   },
   {
     id: "oferta-2",
@@ -16,6 +17,7 @@ export const ofertasData = [
     location: "Belgrano, CABA",
     publishedAt: "2023-10-25T14:30:00Z",
     type: "oferta",
+    category: "Tránsito",
   },
   {
     id: "oferta-3",
@@ -25,6 +27,7 @@ export const ofertasData = [
     location: "Caballito, CABA",
     publishedAt: "2023-10-24T18:00:00Z",
     type: "oferta",
+    category: "Veterinaria",
   },
   {
     id: "oferta-4",
@@ -34,6 +37,7 @@ export const ofertasData = [
     location: "Recoleta, CABA",
     publishedAt: "2023-10-23T09:00:00Z",
     type: "oferta",
+    category: "Tránsito",
   },
   {
     id: "oferta-5",
@@ -43,6 +47,7 @@ export const ofertasData = [
     location: "Villa Crespo, CABA",
     publishedAt: "2023-10-22T11:00:00Z",
     type: "oferta",
+    category: "Veterinaria",
   },
 ];
 
@@ -55,6 +60,7 @@ export const propuestasData = [
     location: "Palermo, CABA",
     publishedAt: "2025-10-26T11:00:00Z",
     type: "propuesta",
+    category: "Tránsito",
   },
   {
     id: "propuesta-2",
@@ -64,6 +70,7 @@ export const propuestasData = [
     location: "Colegiales, CABA",
     publishedAt: "2023-10-25T16:00:00Z",
     type: "propuesta",
+    category: "Tránsito",
   },
   {
     id: "propuesta-3",
@@ -73,6 +80,7 @@ export const propuestasData = [
     location: "Nuñez, CABA",
     publishedAt: "2023-10-24T12:00:00Z",
     type: "propuesta",
+    category: "Veterinaria",
   },
   {
     id: "propuesta-4",
@@ -82,6 +90,7 @@ export const propuestasData = [
     location: "Flores, CABA",
     publishedAt: "2023-10-23T15:00:00Z",
     type: "propuesta",
+    category: "Veterinaria",
   },
   {
     id: "propuesta-5",
@@ -91,6 +100,7 @@ export const propuestasData = [
     location: "Almagro, CABA",
     publishedAt: "2023-10-22T10:00:00Z",
     type: "propuesta",
+    category: "Tránsito",
   },
 ];
 
@@ -104,6 +114,7 @@ export const myPostsData = [
     location: "Baradero",
     publishedAt: "2023-10-26T08:00:00Z",
     type: "propuesta",
+    category: "Alimentos/Donación",
   },
   {
     id: "mypost-2",
@@ -114,6 +125,7 @@ export const myPostsData = [
     location: "Zárate",
     publishedAt: "2023-10-26T07:00:00Z",
     type: "oferta",
+    category: "Tránsito",
   },
   {
     id: "mypost-3",
@@ -124,6 +136,7 @@ export const myPostsData = [
     location: "Alsina",
     publishedAt: "2023-10-26T05:00:00Z",
     type: "propuesta",
+    category: "Alimentos/Donación",
   },
   {
     id: "mypost-4",
@@ -134,5 +147,6 @@ export const myPostsData = [
     location: "Campana",
     publishedAt: "2023-10-26T04:00:00Z",
     type: "oferta",
+    category: "Alimentos/Donación",
   },
 ];
