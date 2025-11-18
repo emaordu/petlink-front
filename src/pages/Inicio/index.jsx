@@ -48,7 +48,6 @@ const Inicio = () => {
 
   return (
     <PagesTemplate
-      userImageUrl={userData.profilePic}
       onProfileClick={handleOpenMenu}
       onNewPostClick={(tipo) => navigate(tipo === 'propuesta' ? '/crear-propuesta' : '/crear-oferta')}
     >

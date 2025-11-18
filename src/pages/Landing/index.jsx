@@ -79,11 +79,7 @@ export const LandingPage = () => {
           <p className={classes.subHeading}>
             Somos la comunidad 100% dedicada a mascotas. Publica tu necesidad u
             ofrece ayuda (transporte, donaciones, refugio) y conecta con otros.
-            Aquí tu publicación se ve
-          </p>
-
-          <p className={classes.subHeading}>
-            Aquí tu publicación se ve
+            <p>Aquí tu publicación se ve!</p>
           </p>
 
           <BtnPrimary

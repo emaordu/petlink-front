@@ -15,6 +15,7 @@
   font-weight: 500;
   font-size: 0.95rem;
   line-height: 1.25rem;
+  flex-shrink: 1;
 }
 
 .image {
